@@ -8249,6 +8249,7 @@ local function G()
 		t:SetScript("OnClick", xt);
 		t:SetScript("OnEnter", c);
 		t:SetScript("OnLeave", r);
+		UIParentLoadAddOn("Blizzard_TalentUI")
 		if(o)then
 			t.arrow = t:CreateTexture(nil, "Background", "TalentBranchTemplate");
 			t.arrow:SetTexCoord(unpack(TALENT_BRANCH_TEXTURECOORDS.down[ - 1]));
@@ -9080,18 +9081,18 @@ local function w(n, l, ...)
 		t.splash.foreground:SetAlpha(1);
 	end
 	if(not AchievementFrame)then
-		AchievementFrame_LoadUI();
+		--AchievementFrame_LoadUI();
 	end
-	local n = CreateFrame("Button", "exhibitA", UIParent, "AchievementAlertFrameTemplate");
+	local n = CreateFrame("Button", "exhibitA", UIParent)-- , "AchievementAlertFrameTemplate");
 	n:Hide();
 	n:ClearAllPoints();
 	n:SetPoint("BOTTOM", 0, 128);
 	n:SetWidth(526);
 	n:SetHeight(160);
-	n.glow:SetWidth(680);
-	n.glow:SetHeight(270);
+	--n.glow:SetWidth(680);
+	--n.glow:SetHeight(270);
 	n:EnableMouse(false)
-	n.shine:SetTexCoord(0, .001, 0, .001);
+	--n.shine:SetTexCoord(0, .001, 0, .001);
 	n.holdDuration = 5;
 	t.achieve = n;
 	n:RegisterEvent("DUEL_FINISHED");
@@ -9099,13 +9100,13 @@ local function w(n, l, ...)
 		if(t.duelStatus == 3)and not PeggleData.exhibitA then
 			PeggleData.exhibitA = true;
 			if(not AchievementFrame)then
-				AchievementFrame_LoadUI();
+				--AchievementFrame_LoadUI();
 			end
 			e.elapsed = 0;
 			e.state = nil;
 			e:SetAlpha(0);
 			e.id = 0;
-			e:SetScript("OnUpdate", AchievementAlertFrame_OnUpdate);
+			--e:SetScript("OnUpdate", AchievementAlertFrame_OnUpdate);
 			e:UnregisterAllEvents();
 			e:Show();
 		end
@@ -9124,7 +9125,7 @@ local function w(n, l, ...)
 	--getglobal(n:GetName().."Name"):SetText("");
 	--local l = getglobal(n:GetName().."Shield");
 	if(l.points)then
-		AchievementShield_SetPoints(10, l.points, GameFontNormal, GameFontNormalSmall);
+		--AchievementShield_SetPoints(10, l.points, GameFontNormal, GameFontNormalSmall);
 	end
 	if(l.icon)then
 		l.icon:SetTexture("Interface\\AchievementFrame\\UI-Achievement-Shields");
@@ -11191,7 +11192,7 @@ local function T()
 				e.state = nil;
 				e:SetAlpha(0);
 				e.id = 0;
-				e:SetScript("OnUpdate", AchievementAlertFrame_OnUpdate);
+				--e:SetScript("OnUpdate", AchievementAlertFrame_OnUpdate);
 				e:UnregisterAllEvents();
 				e:Show();
 			end
